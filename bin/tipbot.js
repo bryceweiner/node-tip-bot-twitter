@@ -100,13 +100,15 @@ if(!fs.existsSync('./config/config.yml')) {
     }
     client.stream('user', function (stream) {
 		stream.on('data', function (data) {
+            var match = data.match(/([a-zA-Z]+)/i);
+            if (match == null)
+                return;
 			data.on('direct_message', function (directMsg) {
 				console.log(directMsg);
 			});
 			data.on('event', function (myEvent) {
 				console.log(myEvent);
 			});
-	        console.log(data);
  		});   
     })
     client.stream('statuses/filter', {track: 'darktipperbot'}, function (stream) {
