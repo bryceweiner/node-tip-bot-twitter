@@ -98,12 +98,11 @@ if(!fs.existsSync('./config/config.yml')) {
                                     str : global[variable]) : settings.coin[variable]) : values[variable];
         });
     }
-    client.post('direct_messages'), { count: 200 }, function (response) {
-    	console.log("DMs...");
-    	console.log(response);
-    }
+
     client.stream('statuses/filter', {track: 'darktipperbot'}, function (stream) {
-     
+		stream.on('direct_message' function (directMessage) {
+			console.log(directMessage);
+		});   
         stream.on('data', function (tweet) {
             //var match = tweet.text.match(/(darktipperbot)(\s)([a-zA-Z]+)(\s)(.+)(\s)([0-9]+)/);
             var match = tweet.text.match(/(darktipperbot)(\s)([a-zA-Z]+)/i);
