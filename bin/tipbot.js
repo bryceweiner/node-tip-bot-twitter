@@ -101,7 +101,7 @@ if(!fs.existsSync('./config/config.yml')) {
      
         stream.on('data', function (tweet) {
             //var match = tweet.text.match(/(darktipperbot)(\s)([a-zA-Z]+)(\s)(.+)(\s)([0-9]+)/);
-            var match = tweet.text.match(/(darktipperbot)(\s)([a-zA-Z]+)/);
+            var match = tweet.text.match(/(darktipperbot)(\s)([a-zA-Z]+)/i);
             if (match == null)
                 return;
             var command = match[3];
@@ -113,7 +113,7 @@ if(!fs.existsSync('./config/config.yml')) {
     // check if the sending user is logged in (identified) with nickserv
             switch (command) {
                 case 'tip':
-                    var match = tweet.text.match(/(darktipperbot)(\s)([a-zA-Z]+)(\s)(\@)(.+)(\s)([0-9]+)/);
+                    var match = tweet.text.match(/(darktipperbot)(\s)([a-zA-Z]+)(\s)(\@)(.+)(\s)([0-9]+)/i);
                     console.log('tip');
                     console.log(match[0] + ',' + match[1] + ',' + match[2] + ',' + match[3] + ',' + match[4] + ',' + match[5] + ',' + match[6] + ',' + match[7] + ',' + match[8]);
                     if (match == null || match.length < 3) {
