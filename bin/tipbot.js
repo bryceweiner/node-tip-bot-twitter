@@ -98,7 +98,7 @@ if(!fs.existsSync('./config/config.yml')) {
                                     str : global[variable]) : settings.coin[variable]) : values[variable];
         });
     }
-    client.stream('user', function(stream) {
+    client.stream('user', function (stream) {
 		stream.on('direct_message', function (directMessage) {
 			console.log(directMessage);
 		});   
