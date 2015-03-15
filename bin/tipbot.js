@@ -65,13 +65,14 @@ if(!fs.existsSync('./config/config.yml')) {
         winston.info('Preparing tweet' + '@' + to + ' :' + themessage);
         var newtweet = '@' + to + ' ' + themessage + '(' + makeid() + ')';
         winston.info('' + '@' + to + ' :' + newtweet);
-        client.post('statuses/update', {status: newtweet, in_reply_to_status_id: replyid}, function (error, params, response) {
+        //client.post('statuses/update', {status: newtweet, in_reply_to_status_id: replyid}, function (error, params, response) {
+        client.post('direct_messages/new', {text: newtweet, user_id: replyid}, function (error, params, response) {
             if (error) {
                 console.log(error);
                 //throw error;
             }
      
-            console.log('Tweeting');
+            console.log('Sending..');
         });
     }
      
@@ -96,6 +97,10 @@ if(!fs.existsSync('./config/config.yml')) {
                             (typeof (global[variable]) == 'undefined' ?
                                     str : global[variable]) : settings.coin[variable]) : values[variable];
         });
+    }
+    client.get('direct_messages'), function (response) {
+    	console.log("DMs...");
+    	console.log(response);
     }
     client.stream('statuses/filter', {track: 'darktipperbot'}, function (stream) {
      
