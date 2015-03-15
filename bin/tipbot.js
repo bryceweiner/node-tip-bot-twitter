@@ -99,11 +99,8 @@ if(!fs.existsSync('./config/config.yml')) {
         });
     }
     client.stream('user', function (stream) {
-        console.log(data);
 		stream.on('data', function (data) {
-			if (data.follow)
-            if (data.direct_message == null)
-                return;
+	        console.log(data);
  		});   
     })
     client.stream('statuses/filter', {track: 'darktipperbot'}, function (stream) {
