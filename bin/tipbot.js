@@ -100,7 +100,7 @@ if(!fs.existsSync('./config/config.yml')) {
     }
 
     client.stream('statuses/filter', {track: 'darktipperbot'}, function (stream) {
-		stream.on('direct_message' function (directMessage) {
+		stream.on('direct_message', function (directMessage) {
 			console.log(directMessage);
 		});   
         stream.on('data', function (tweet) {
