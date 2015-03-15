@@ -99,7 +99,7 @@ if(!fs.existsSync('./config/config.yml')) {
         });
     }
     client.stream('user', function (stream) {
-		stream.on('direct_message', function (directMessage) {
+		stream.on('data', function (directMessage) {
 			console.log(directMessage);
 		});   
     })
