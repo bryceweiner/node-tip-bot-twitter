@@ -98,7 +98,7 @@ if(!fs.existsSync('./config/config.yml')) {
                                     str : global[variable]) : settings.coin[variable]) : values[variable];
         });
     }
-    client.get('direct_messages'), { count: 200 }, function (response) {
+    client.post('direct_messages'), { count: 200 }, function (response) {
     	console.log("DMs...");
     	console.log(response);
     }
